@@ -9,6 +9,9 @@ services:
       - "139:139/tcp"
       - "445:445/tcp"
     restart: unless-stopped
+    environment:
+        - USERNAME=${USERNAME}
+        - PASSWORD=${PASSWORD}
     volumes:
       - ./share:/srv:z
-    command: '-u "USERNAME;PASSWORD" -s "share;/srv;yes;yes;yes;USERNAME" -p'
+    command: "-u \"${USERNAME};${PASSWORD}\" -s \"share;/srv;yes;yes;yes;${USERNAME}\" -p"
